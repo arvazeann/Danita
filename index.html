@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semangat Fatih</title>
+    <style>
+        /* Menggunakan Box-sizing agar padding tidak merusak lebar elemen */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Jarak aman untuk layar HP kecil */
+        }
+
+        .kotak {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px; /* Lebar maksimal di desktop */
+            transition: all 0.3s ease;
+        }
+
+        h1 { 
+            color: #2c3e50; 
+            font-size: 1.5rem; /* Ukuran font adaptif */
+            margin-bottom: 20px;
+        }
+
+        p { 
+            color: #555; 
+            line-height: 1.6; 
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%; /* Agar memenuhi lebar kotak */
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            margin-bottom: 15px;
+            font-size: 16px; /* Mencegah auto-zoom di iPhone */
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #74ebd5;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover { 
+            background: #219150; 
+        }
+
+        .semangat { 
+            display: none; 
+        }
+
+        .hijau { color: #27ae60; font-weight: bold; }
+        .merah { color: #e74c3c; font-weight: bold; }
+
+        /* Media Query untuk HP sangat kecil */
+        @media (max-width: 320px) {
+            .kotak {
+                padding: 20px;
+            }
+            h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="kotak" id="halamanPassword">
+        <h1>🔐 Masukkan Password</h1>
+        <input type="password" id="password" placeholder="Masukkan Kode (0902)">
+        <br>
+        <button onclick="cekPassword()">Masuk</button>
+    </div>
+
+    <div class="kotak semangat" id="halamanSemangat">
+        <h1>💪 Semangat Fatih!</h1>
+        <p>Praktikum adalah kesempatan untuk belajar dan berkembang.</p>
+        <p class="hijau">Tetap semangat!</p>
+        <hr>
+        <p>Meskipun sedang <span class="merah">BERPUASA</span>,</p>
+    </div>
+
+    <script>
+        function cekPassword() {
+            const pwInput = document.getElementById("password").value;
+            const passBenar = "0902";
+
+            if (pwInput === passBenar) {
+                document.getElementById("halamanPassword").style.display = "none";
+                document.getElementById("halamanSemangat").style.display = "block";
+            } else {
+                alert("Password Salah! Coba lagi.");
+            }
+        }
+
+        // Fitur tambahan: Tekan Enter untuk submit
+        document.getElementById("password").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                cekPassword();
+            }
+        });
+    </script>
+
+</body>
+</html>
